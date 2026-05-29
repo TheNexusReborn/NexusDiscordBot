@@ -1,0 +1,30 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {url 'https://www.jitpack.io'}
+    maven {url 'https://repo.stardevllc.com/releases'}
+}
+
+dependencies {
+    implementation('com.mysql:mysql-connector-j:8.1.0') {
+        exclude group: 'com.google.protobuf', module: 'protobuf-java'
+    }
+    implementation 'org.slf4j:slf4j-nop:2.0.16'
+    implementation('net.dv8tion:JDA:5.2.0') {
+        exclude module: 'opus-java'
+    }
+    implementation "com.stardevllc:config:0.3.1"
+    implementation "com.stardevllc:StarSQL:0.4.0"
+    implementation "com.stardevllc:StarLib:0.25.0"
+    implementation "org.yaml:snakeyaml:2.4"
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
